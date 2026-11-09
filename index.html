@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>*{margin:0}body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{--safe-t:env(safe-area-inset-top,0px)}</style>
+<title>Dorian Cession</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: dark-first single column — hero, projects grid (featured + 2x2), skills strip, footer. Accent = signal blue; mono labels for an engineering identity. */
+:root{
+  --bg:#0f1319; --panel:#161c25; --panel-2:#1b222d; --line:#28313f;
+  --fg:#e7ecf3; --muted:#9aa7b8; --faint:#6b7889;
+  --accent:#5b9dff; --accent-ink:#0b1220; --warm:#f4b860;
+  --radius:14px; --maxw:980px;
+  --display:"Archivo",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){ :root:not([data-theme="dark"]){
+  --bg:#f5f7fa; --panel:#ffffff; --panel-2:#eef2f7; --line:#dce3ec;
+  --fg:#172030; --muted:#56637a; --faint:#8793a6;
+  --accent:#2f6df0; --accent-ink:#ffffff; --warm:#b5781a;
+  color-scheme:light;
+}}
+:root[data-theme="light"]{
+  --bg:#f5f7fa; --panel:#ffffff; --panel-2:#eef2f7; --line:#dce3ec;
+  --fg:#172030; --muted:#56637a; --faint:#8793a6;
+  --accent:#2f6df0; --accent-ink:#ffffff; --warm:#b5781a;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.55;
+  -webkit-font-smoothing:antialiased;}
+.wrap{max-width:var(--maxw);margin:0 auto;
+  padding-left:max(18px,env(safe-area-inset-left,0px));
+  padding-right:max(18px,env(safe-area-inset-right,0px));}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+.mono{font-family:var(--mono)}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:18px}
+.brand{font-family:var(--mono);font-size:.82rem;color:var(--muted)}
+.brand b{color:var(--fg)}
+.toggle{font-family:var(--mono);font-size:.78rem;color:var(--muted);background:var(--panel);
+  border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.toggle:hover{color:var(--fg);border-color:var(--accent)}
+.toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* hero */
+.hero{padding-block:14px 30px;border-bottom:1px solid var(--line)}
+.hero h1{font-weight:900;font-size:clamp(2.3rem,7vw,3.7rem);line-height:1.02;letter-spacing:-.01em}
+.hero .role{font-family:var(--mono);color:var(--accent);margin-top:12px;font-size:.95rem}
+.hero .thesis{color:var(--muted);max-width:60ch;margin-top:16px;font-size:1.06rem}
+.hero .school{color:var(--faint);font-size:.9rem;margin-top:10px;font-family:var(--mono)}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.82rem;
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 13px;color:var(--fg);
+  text-decoration:none}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip .k{color:var(--faint)}
+.copybtn{cursor:pointer}
+.copybtn.ok{border-color:var(--accent);color:var(--accent)}
+
+/* sections */
+section{padding-block:34px}
+.sechead{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
+.sechead h2{font-size:1.2rem;font-weight:700;letter-spacing:.01em}
+.sechead .n{font-family:var(--mono);color:var(--faint);font-size:.8rem}
+
+/* projects */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;display:flex;flex-direction:column;gap:12px;transition:transform .15s ease,border-color .15s ease}
+.card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.card.feat{grid-column:1 / -1;background:
+  linear-gradient(180deg,var(--panel-2),var(--panel));}
+.card .top-row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mono-badge{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--warm)}
+.card h3{font-size:1.18rem;font-weight:700}
+.card.feat h3{font-size:1.5rem}
+.card p{color:var(--muted);font-size:.95rem;margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
+.tag{font-family:var(--mono);font-size:.72rem;color:var(--muted);background:var(--panel-2);
+  border:1px solid var(--line);border-radius:7px;padding:3px 8px}
+.card .more{margin-top:auto;font-family:var(--mono);font-size:.82rem;color:var(--accent);
+  text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.card .more:hover{gap:10px}
+.card a.more:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.card-media{margin:-20px -20px 6px;border-bottom:1px solid var(--line);
+  border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;line-height:0;background:#05070a}
+.card-media img{width:100%;display:block;aspect-ratio:820/517;object-fit:cover}
+.card.feat .card-media img{aspect-ratio:1280/520;object-position:top}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.sk{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px}
+.sk h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 8px}
+.sk p{margin:0;font-size:.92rem;color:var(--fg)}
+
+/* about */
+.about{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.about p{margin:0;color:var(--muted);max-width:68ch}
+.about .lead{color:var(--fg);font-size:1.05rem;margin-bottom:10px}
+
+footer{border-top:1px solid var(--line);padding-block:26px 40px;color:var(--faint);
+  font-family:var(--mono);font-size:.8rem;display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between}
+
+@media (max-width:620px){
+  .grid{grid-template-columns:1fr}
+  section{padding-block:26px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+  <div class="top">
+    <span class="brand"><b>Dorian Cession</b> · dev</span>
+    <button class="toggle" id="themeBtn" type="button" aria-label="Changer de thème">◐ thème</button>
+  </div>
+
+  <header class="hero">
+    <span class="eyebrow">Portfolio</span>
+    <h1>Dorian&nbsp;Cession</h1>
+    <div class="role">Développeur junior polyvalent · Liège, Belgique</div>
+    <p class="thesis">Je conçois et je livre des outils complets, du prototype jouable à l'application packagée. Ma spécialité : des logiciels qui tournent <strong>en local</strong>, sans dépendre du cloud — du jeu vidéo à l'IA appliquée.</p>
+    <div class="school">Bachelier — Développement de jeux vidéo · HEPL</div>
+    <div class="links">
+      <a class="chip" href="https://github.com/ackli" target="_blank" rel="noopener"><span class="k">github</span> /ackli</a>
+      <a class="chip" href="https://www.linkedin.com/in/dorian-cession-ab6517197/" target="_blank" rel="noopener"><span class="k">linkedin</span> /dorian-cession</a>
+      <button class="chip copybtn" id="mail" type="button"><span class="k">email</span> doriancession@gmail.com</button>
+    </div>
+  </header>
+
+  <section>
+    <div class="sechead"><span class="n">01</span><h2>Projets</h2></div>
+    <div class="grid">
+
+      <article class="card feat">
+        <figure class="card-media"><img src="media/ownplaud_home.jpg" alt="Interface d'OwnPlaud : écran d'accueil avec statistiques et import audio" loading="lazy"></figure>
+        <div class="top-row"><span class="mono-badge">Projet phare</span></div>
+        <h3>OwnPlaud — transcription &amp; notes 100 % locales</h3>
+        <p>Chaîne de traitement hors-ligne : transcription audio par whisper.cpp (accélération CUDA), synthèse par un LLM local (Ollama / Qwen3), export Markdown et PDF, interface graphique. Comprend un travail documenté sur la réduction des hallucinations du modèle et un découpage audio avec cache.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">whisper.cpp</span><span class="tag">Ollama</span><span class="tag">CUDA</span><span class="tag">PyInstaller</span></div>
+        <a class="more" href="https://github.com/ackli/OwnPlaud" target="_blank" rel="noopener">Voir le code →</a>
+      </article>
+
+      <article class="card">
+        <figure class="card-media"><img src="media/protoblinddrill.gif" alt="Gameplay de ProtoBlindDrill : exploration dans l'obscurité, orbes de lumière et minage" loading="lazy"></figure>
+        <div class="top-row"><span class="mono-badge">Jeu vidéo</span></div>
+        <h3>ProtoBlindDrill</h3>
+        <p>Jeu 2D de minage et d'arène sous Unity : génération de terrain procédurale (bruit de Perlin), pathfinding des ennemis sur NavMesh « dual-plane », systèmes d'équipement et de combat.</p>
+        <div class="tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Procédural</span></div>
+        <a class="more" href="https://github.com/ackli/ProtoBlindDrill" target="_blank" rel="noopener">Voir le code →</a>
+      </article>
+
+      <article class="card">
+        <div class="top-row"><span class="mono-badge">Web full-stack</span></div>
+        <h3>Plateforme de matchmaking CS2</h3>
+        <p>Application web complète : authentification, file d'attente, système d'ELO et lobbys pour organiser des matchs 1v1 et 2v2.</p>
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Prisma</span></div>
+        <a class="more" href="https://github.com/ackli/ProjetSite" target="_blank" rel="noopener">Voir le code →</a>
+      </article>
+
+      <article class="card">
+        <div class="top-row"><span class="mono-badge">Sécurité</span></div>
+        <h3>Steam MFA Manager</h3>
+        <p>Gestionnaire local multi-comptes de double authentification Steam : coffre chiffré (Argon2id + AES-256-GCM), protection Windows DPAPI, tests de sécurité, application publiée.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Cryptographie</span><span class="tag">CustomTkinter</span></div>
+        <a class="more" href="https://github.com/ackli/steam-mfa-manager" target="_blank" rel="noopener">Voir le code →</a>
+      </article>
+
+      <article class="card">
+        <div class="top-row"><span class="mono-badge">Outil</span></div>
+        <h3>QR Code Generator</h3>
+        <p>Générateur de QR code local et hors-ligne : choix du niveau de correction d'erreur, aperçu et export PNG, interface épurée.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Tkinter</span><span class="tag">Pillow</span></div>
+        <a class="more" href="https://github.com/ackli/QRCodeGenerator" target="_blank" rel="noopener">Voir le code →</a>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead"><span class="n">02</span><h2>Compétences</h2></div>
+    <div class="skills">
+      <div class="sk"><h4>Langages</h4><p>C#, C++, Python, TypeScript</p></div>
+      <div class="sk"><h4>Jeu vidéo</h4><p>Unity, Unreal Engine (Blueprints), génération procédurale, IA de jeu</p></div>
+      <div class="sk"><h4>Web &amp; logiciel</h4><p>Next.js, Prisma, SQLite, interfaces de bureau</p></div>
+      <div class="sk"><h4>IA appliquée</h4><p>whisper.cpp, LLM locaux (Ollama), génération augmentée</p></div>
+      <div class="sk"><h4>Outils</h4><p>Git, ffmpeg, PyInstaller, CUDA</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead"><span class="n">03</span><h2>À propos</h2></div>
+    <div class="about">
+      <p class="lead">Étudiant en 3<sup>e</sup> bachelier Développement de jeux vidéo à la HEPL, après un parcours en sciences puis en informatique.</p>
+      <p>Je m'intéresse autant au jeu vidéo qu'au développement logiciel et web, avec un fil conducteur : construire des outils qui fonctionnent sur la machine, performants et respectueux des données. J'utilise l'assistance d'outils d'IA dans mon flux de travail, sous supervision — cadrage, revue et tests de chaque changement.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Dorian Cession · Liège, Belgique</span>
+    <span>doriancession@gmail.com</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  // theme toggle (per-viewer convenience)
+  var btn=document.getElementById('themeBtn'), root=document.documentElement;
+  function sysDark(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;}
+  try{var saved=localStorage.getItem('dc_theme'); if(saved)root.setAttribute('data-theme',saved);}catch(e){}
+  btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    var next=cur? (cur==='dark'?'light':'dark') : (sysDark()?'light':'dark');
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('dc_theme',next);}catch(e){}
+  });
+  // copy email
+  var mail=document.getElementById('mail'), addr='doriancession@gmail.com', orig=mail.innerHTML;
+  mail.addEventListener('click',function(){
+    function done(){mail.classList.add('ok');mail.innerHTML='<span class="k">email</span> copié ✓';
+      setTimeout(function(){mail.classList.remove('ok');mail.innerHTML=orig;},1600);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(addr).then(done).catch(function(){
+        var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);});
+    }else{var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);}
+  });
+})();
+</script>
+
+</body>
+</html>
